@@ -48,10 +48,18 @@
 }
 .title {
   font-size: 18px;
+  font-weight: 800;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .rating {
   font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rating svg {
+  fill: #ffd700;
 }
