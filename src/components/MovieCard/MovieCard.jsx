@@ -3,7 +3,13 @@ const MovieCard = ({ movie, ...props }) => {
   return (
     <div className="card">
       <img
-        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+        src={
+          movie.poster_path == null && movie.backdrop_path == null
+            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1f4C-cWV03_czRXhL1THkOdS9RDnAtPxRnA&s"
+            : `https://image.tmdb.org/t/p/w500${
+                movie.poster_path || movie.backdrop_path
+              }`
+        }
         alt={movie.original_title}
         className="backdrop"
       />
