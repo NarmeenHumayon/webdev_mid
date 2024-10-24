@@ -5,20 +5,27 @@ import "./DescriptionPage.css";
 const DescriptionPage = () => {
   const { id } = useParams();
   const [movieDetail, setMovieDetail] = useState({});
+  const [existingIds, setExistingIds] = useState([]);
   const API_KEY = import.meta.env.VITE_TMDBKEY;
   function updateIdsInLocalStorage(newId) {
-    const existingIds = JSON.parse(localStorage.getItem("ids")) || [];
+    const thisexistingIds = JSON.parse(localStorage.getItem("ids")) || [];
 
     if (!existingIds.includes(newId)) {
-      existingIds.push(newId);
+      thisexistingIds.push(newId);
 
-      localStorage.setItem("ids", JSON.stringify(existingIds));
+      localStorage.setItem("ids", JSON.stringify(thisexistingIds));
+    } else {
+      const idIndex = thisexistingIds.indexOf(newId);
+      thisexistingIds.splice(idIndex, 1);
+      setExistingIds(thisexistingIds);
+      localStorage.setItem("ids", JSON.stringify(thisexistingIds));
     }
 
-    return existingIds;
+    return thisexistingIds;
   }
-
   useEffect(() => {
+    const existingIds = JSON.parse(localStorage.getItem("ids")) || [];
+    setExistingIds(existingIds);
     axios
       .get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
       .then((res) => {
@@ -97,7 +104,7 @@ const DescriptionPage = () => {
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
-              fill="currentColor"
+              fill={existingIds.includes(id) ? "#ff0000" : "currentColor"}
               class="bi bi-heart"
               viewBox="0 0 16 16"
             >
