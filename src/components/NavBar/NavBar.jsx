@@ -4,7 +4,7 @@ import React from "react";
 import "./NavBar.css";
 
 const Navbar = () => {
-  const { setQuery } = useContext(queryContext);
+  const { setQuery, setFavourites, favourite } = useContext(queryContext);
   const queryRef = useRef();
   return (
     <nav className="navbar">
@@ -25,12 +25,16 @@ const Navbar = () => {
           <input type="text" ref={queryRef} placeholder="Search..." />
         </form>
         <div className="navbar-button">
-          <button>
+          <button
+            onClick={() => {
+              setFavourites(!favourite);
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
-              fill="currentColor"
+              fill={favourite ? "#ff0000" : "currentColor"}
               className="bi bi-bookmark-heart"
               viewBox="0 0 16 16"
             >
