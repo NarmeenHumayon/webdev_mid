@@ -1,7 +1,7 @@
 .flex-hor {
   display: flex;
   justify-content: space-between;
-  align-items: start !important;
+  align-items: start;
   gap: 10px;
 }
 .tagline {
@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.title {
+.dtitle {
   font-size: 75px;
 }
 .language {

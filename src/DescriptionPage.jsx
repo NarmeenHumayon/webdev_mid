@@ -36,7 +36,7 @@ const DescriptionPage = () => {
         className="image"
       />
       <div className="flex-ver">
-        <div className="title">{movieDetail.original_title}</div>
+        <div className="dtitle">{movieDetail.original_title}</div>
         <div className="tagline">{movieDetail.tagline}</div>
         <div
           className="flex-hor"
