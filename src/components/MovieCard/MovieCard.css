@@ -11,10 +11,6 @@
   object-fit: cover;
   object-position: center;
 }
-.flex-hor {
-  display: flex;
-  justify-content: space-between;
-}
 .desc {
   margin-bottom: 0;
   font-size: 12px;
