@@ -1,7 +1,11 @@
+import { useContext, useRef } from "react";
+import { queryContext } from "../../Context/Context";
 import React from "react";
 import "./NavBar.css";
 
 const Navbar = () => {
+  const { setQuery } = useContext(queryContext);
+  const queryRef = useRef();
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -11,8 +15,14 @@ const Navbar = () => {
         />
       </div>
       <div className="flex-hor" style={{ alignItems: "center", gap: "30px" }}>
-        <form className="navbar-search">
-          <input type="text" placeholder="Search..." />
+        <form
+          className="navbar-search"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setQuery(queryRef.current.value);
+          }}
+        >
+          <input type="text" ref={queryRef} placeholder="Search..." />
         </form>
         <div className="navbar-button">
           <button>
