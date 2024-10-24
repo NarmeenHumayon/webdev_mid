@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import MovieCard from "./components/MovieCard/MovieCard";
 import axios from "axios";
+import Navbar from "./components/NavBar/NavBar";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -24,6 +25,7 @@ function App() {
   }, []);
   return (
     <>
+      <Navbar />
       <div className="movies">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
