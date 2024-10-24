@@ -37,7 +37,15 @@ function App() {
           {loading ? (
             <WifiLoader />
           ) : (
-            movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+            movies.map((movie) => (
+              <a
+                key={movie.id}
+                className="resetAnchor"
+                href={`/movies/${movie.id}`}
+              >
+                <MovieCard movie={movie} />
+              </a>
+            ))
           )}
         </div>
       </queryContext.Provider>
