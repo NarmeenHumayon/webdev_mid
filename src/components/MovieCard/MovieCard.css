@@ -1,0 +1,45 @@
+.card {
+  width: 350px;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+}
+.backdrop {
+  width: 350px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+}
+.flex-hor {
+  display: flex;
+  justify-content: space-between;
+}
+.desc {
+  margin-bottom: 0;
+  font-size: 12px;
+  text-align: justify;
+  --lh: 1.4rem;
+  line-height: var(--lh);
+}
+.truncate-overflow {
+  --max-lines: 2;
+  position: relative;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  padding-right: 1rem;
+}
+.truncate-overflow::before {
+  position: absolute;
+  content: "...";
+  bottom: 0;
+  right: 0;
+}
+.truncate-overflow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1rem;
+  height: 1rem;
+  background: white;
+}
